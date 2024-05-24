@@ -1,0 +1,32 @@
+services:
+  mongo-finance:
+    image: mongo:latest
+    restart: always
+    container_name: mongo-finance
+    hostname: "mongo-finance"
+    environment:
+      - MONGO_INITDB_DATABASE=dbfinance
+    ports:
+      - '27017:27017'
+    networks:
+      - my_network
+
+
+  msfinance:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: "ms-finance"
+    depends_on:
+      - mongo-finance
+    environment:
+      MONGO_HOSTNAME: mongo-finance
+    ports:
+      - 8080:8080
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
+    external: true
