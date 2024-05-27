@@ -16,7 +16,11 @@ public class Acao {
         this.preco = preco;
     }    
 
-     public double getPreco() {
+    public double getPreco() {
         return preco;
+    }
+
+    public String getSimbolo() {
+        return simbolo;
     }
 }
