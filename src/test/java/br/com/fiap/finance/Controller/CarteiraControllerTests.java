@@ -39,8 +39,7 @@ class gCarteiraControllerTests {
                 BDDMockito.when(carteiraService.findAll())
                                 .thenReturn(Flux.just(carteira));
 
-                BDDMockito.when(carteiraService.save(carteira.getNome(),
-                                carteira.getAcoes()))
+                BDDMockito.when(carteiraService.save(carteira.getNome(),carteira.getAcoes()))
                                 .thenReturn(Mono.just(carteira));
 
                 BDDMockito.when(carteiraService.calcularRentabilidade("MinhaCarteira"))
