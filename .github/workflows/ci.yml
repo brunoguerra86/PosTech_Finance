@@ -26,3 +26,12 @@ jobs:
 
       - name: Rodar Testes Unitários
         run: mvn test
+
+      - name: Gerar Relatório de Cobertura de Teste
+        run: mvn jacoco:report
+
+      - name: Arquivar Relatório de Cobertura de Teste
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: target/site/jacoco
